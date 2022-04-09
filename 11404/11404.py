@@ -31,8 +31,13 @@ def solution():
 
     floyd_warshall()
     for i in range(1, n + 1):
-        print(*adj[i][1:])
-
+        ans_list = []
+        for j in range(1, n + 1):
+            if adj[i][j] == sys.maxsize:
+                ans_list.append(0)
+            else:
+                ans_list.append(adj[i][j])
+        print(*ans_list)
 
 if __name__ == "__main__":
     set_variable()
