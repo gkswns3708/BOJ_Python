@@ -131,3 +131,4 @@ dmypy.json
 /num
 .gitignore
 /*/*.txt
+/*/tempCodeRunnerFile.py
