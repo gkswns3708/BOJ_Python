@@ -132,3 +132,4 @@ dmypy.json
 .gitignore
 /*/*.txt
 /*/tempCodeRunnerFile.py
+/*_practice
