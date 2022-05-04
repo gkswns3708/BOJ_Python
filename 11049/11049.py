@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(int(1e8))
+sys.setrecursionlimit(int(1e5))
 get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
 get_input: int = lambda: int(sys.stdin.readline().strip())
 
@@ -21,16 +21,15 @@ def set_variable():
 def solution(s, e):
     if s == e:
         return 0
-    elif dp_table[s][e] != -1:
+    if dp_table[s][e] != -1:
         return dp_table[s][e]
-    elif s + 1 == e:
+    if s + 1 == e:
         dp_table[s][e] = arr[s][0] * arr[s][1] * arr[e][1]
         return dp_table[s][e]
-    else:
-        for i in range(s, e):
-            ret = solution(s, i) + solution(i + 1, e) + (arr[s][0] * arr[i][1] *arr[e][1])
-            if dp_table[s][e] == -1 or dp_table[s][e] > ret:
-                dp_table[s][e] = ret
+    for i in range(s, e):
+        ret = solution(s, i) + solution(i + 1, e) + (arr[s][0] * arr[i][1] *arr[e][1])
+        if dp_table[s][e] == -1 or dp_table[s][e] > ret:
+            dp_table[s][e] = ret
     return dp_table[s][e]
 
 if __name__ == "__main__":
