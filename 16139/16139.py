@@ -1,40 +1,38 @@
 import sys
-sys.setrecursionlimit(10 ** 8)
+from pprint import pprint
+
 get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
 get_input: int = lambda: int(sys.stdin.readline().strip())
 
-def main():    
-    def set_variable():
-        def find_parents(a, parents):
-            if a == parents[a]: 
-                return a
-            else:
-                parents[a] = find_parents(parents[a], parents)
-                return parents[a]
+S = None
+N = None
+cnt = None
 
-        def _union(a, b, parents):            
-            a = find_parents(a, parents)
-            b = find_parents(b, parents)
-            parents[b] = a
-
-        def _check(a, b, parents):
-            a = find_parents(a, parents)
-            b = find_parents(b, parents)
-            return a == b
-
-        N, M = get_line()
-        parents = [i for i in range(N + 1)]
-        for _ in range(M):
-            op, a, b = get_line()
-            if op == 0:
-                _union(min(a, b), max(a, b), parents)
-            else:
-                if _check(a, b, parents):
-                    print("YES")
+def main():
+    global S, N, cnt
+    def solution(cnt, a, S, l, r):
+        return cnt[ord(a) - 97][r] - cnt[ord(a) - 97][l] + int(S[l] == a)
+    def make_cnt(S):
+        cnt_arr = []
+        for alphabet in 'abcdefghijklmnopqrstuvwxyz':
+            temp = [0 for _ in S]
+            cnt = 0
+            for idx, S_alphabet in enumerate(S):
+                if idx == 0:
+                    temp[idx] = int(S_alphabet == alphabet)
                 else:
-                    print("NO")
+                    temp[idx] =  temp[idx - 1] + int(S_alphabet == alphabet)
+            cnt_arr.append(temp)
+        return cnt_arr
+            
 
-    set_variable()
+    S = sys.stdin.readline().rstrip()
+    N = get_input()
+    cnt = make_cnt(S)
+    for _ in range(N):
+        a, l, r = sys.stdin.readline().rstrip().split()
+        l, r = int(l), int(r)
+        sys.stdout.write(str(solution(cnt, a, S, l, r)) + '\n')
 
 
 if __name__ == "__main__":
