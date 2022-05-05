@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(10 ** 5)
+sys.setrecursionlimit(10**5)
 get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
 get_input: int = lambda: int(sys.stdin.readline().strip())
 
