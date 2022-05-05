@@ -39,6 +39,7 @@ def solution():
                 ans_list.append(adj[i][j])
         print(*ans_list)
 
+
 if __name__ == "__main__":
     set_variable()
     solution()

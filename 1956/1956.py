@@ -1,9 +1,11 @@
 import sys
+
 get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
 get_input: int = lambda: int(sys.stdin.readline().strip())
 
 V, E = None, None
 adj = None
+
 
 def set_variable():
     global V, E, adj
@@ -15,8 +17,10 @@ def set_variable():
     for i in range(1, V + 1):
         adj[i][i] = 0
 
+
 def solution():
     global V, E, adj
+
     def floyd_warshall():
         for m in range(1, V + 1):
             for s in range(1, V + 1):
@@ -31,14 +35,12 @@ def solution():
             if adj[i][j] == sys.maxsize or adj[j][i] == sys.maxsize:
                 continue
             ans = min(ans, adj[i][j] + adj[j][i])
-    
+
     if ans == sys.maxsize:
         print(-1)
     else:
         print(ans)
-    
-                            
-    
+
 
 if __name__ == "__main__":
     set_variable()

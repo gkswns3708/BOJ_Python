@@ -13,9 +13,10 @@ ans_list = None
 
 
 def set_variable():
-    global n,m,t,s,g,h, adj, x_list,heap, ans_list
+    global n, m, t, s, g, h, adj, x_list, heap, ans_list
+
     def init_variable():
-        global n,m,t,s,g,h, adj, x_list,heap, ans_list
+        global n, m, t, s, g, h, adj, x_list, heap, ans_list
         n, m, t = None, None, None
         s, g, h = None, None, None
         x_list = []
@@ -37,9 +38,10 @@ def set_variable():
 
 
 def solution():
-    global n,m,t,s,g,h, dist_s, dist_h, dist_g, adj, x_list,heap, ans_list
+    global n, m, t, s, g, h, dist_s, dist_h, dist_g, adj, x_list, heap, ans_list
+
     def Dijkstra(dist, st_idx):
-        dist[st_idx] = 0  
+        dist[st_idx] = 0
         heapq.heappush(heap, (0, st_idx))
 
         while heap:

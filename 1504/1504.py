@@ -1,7 +1,9 @@
 import sys
 import heapq
+
 get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
 get_input: int = lambda: int(sys.stdin.readline().strip())
+
 
 def Dijkstra(st_idx, dist, heap):
     dist[st_idx] = 0
@@ -16,7 +18,8 @@ def Dijkstra(st_idx, dist, heap):
                 dist[nxt_pos] = nxt_dist
                 heapq.heappush(heap, (nxt_dist, nxt_pos))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Input & Define
     N, E = get_line()
     adj = [[] for i in range(N + 1)]
@@ -26,8 +29,8 @@ if __name__ == '__main__':
 
     for i in range(E):
         a, b, c = get_line()
-        adj[a].append((b,c))
-        adj[b].append((a,c))
+        adj[a].append((b, c))
+        adj[b].append((a, c))
 
     v1, v2 = get_line()
     Dijkstra(v1, dist_v1, heap)
@@ -36,7 +39,7 @@ if __name__ == '__main__':
     answer = min(dist_v1[1] + dist_v2[N], dist_v1[N] + dist_v2[1])
     answer += dist_v1[v2]
 
-    if answer >= sys.maxsize :
+    if answer >= sys.maxsize:
         print(-1)
     else:
         print(answer)

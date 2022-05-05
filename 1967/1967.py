@@ -22,6 +22,7 @@ def set_variable():
         adj[u].append((v, w))
         adj[v].append((u, w))
 
+
 def solution():
     global V, adj, visited
 

@@ -5,6 +5,8 @@ get_input: int = lambda: int(sys.stdin.readline().strip())
 
 N = None
 deq = None
+
+
 def main():
     global N, deq
     N = get_input()
@@ -16,7 +18,7 @@ def main():
             out[stack.pop(-1)[1]] = now_num
         stack.append((now_num, idx))
     print(*out)
-    
+
 
 if __name__ == "__main__":
     main()

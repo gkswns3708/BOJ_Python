@@ -11,21 +11,34 @@ visited = None
 
 def possible(z, y, x):
     global N, M, H, arr, visited
-    if (x >= 0) and (x < N) and (y >=0) and (y < M) and (z >= 0) and (z < H) and (arr[z][y][x] == 0) and (visited[z][y][x] == False):
+    if (
+        (x >= 0)
+        and (x < N)
+        and (y >= 0)
+        and (y < M)
+        and (z >= 0)
+        and (z < H)
+        and (arr[z][y][x] == 0)
+        and (visited[z][y][x] == False)
+    ):
         return True
     else:
         return False
 
+
 def set_variable():
     global N, M, H, arr, visited
     N, M, H = get_line()
-    arr = [[[None for _ in range(N + 1)] for _ in range(M  + 1)] for _ in range(H + 1)]
-    visited = [[[False for _ in range(N + 1)] for _ in range(M + 1)] for _ in range(H + 1)]
+    arr = [[[None for _ in range(N + 1)] for _ in range(M + 1)] for _ in range(H + 1)]
+    visited = [
+        [[False for _ in range(N + 1)] for _ in range(M + 1)] for _ in range(H + 1)
+    ]
     for z in range(H):
         for y in range(M):
             tmp = list(get_line())
             for x, value in enumerate(tmp):
                 arr[z][y][x] = value
+
 
 def solution():
     global N, M, H, arr, visited
@@ -42,7 +55,7 @@ def solution():
     dx = [0, 0, 0, 0, 1, -1]
     dy = [0, 0, 1, -1, 0, 0]
     dz = [-1, 1, 0, 0, 0, 0]
-    
+
     while deq:
         cnt = len(deq)
         for idx in range(cnt):
@@ -56,17 +69,18 @@ def solution():
                     visited[nxt_z][nxt_y][nxt_x] = True
                     deq.append((nxt_z, nxt_y, nxt_x))
         day += 1
-    
+
     for z in range(H):
         for y in range(M):
             for x in range(N):
                 if visited[z][y][x] == False and arr[z][y][x] == 0:
                     check = False
-    
+
     if check:
         print(day - 1)
     else:
         print(-1)
+
 
 if __name__ == "__main__":
     set_variable()

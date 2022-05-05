@@ -1,18 +1,20 @@
 import sys
+
 sys.setrecursionlimit(10 ** 8)
 get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
 get_input: int = lambda: int(sys.stdin.readline().strip())
 
-def main():    
+
+def main():
     def set_variable():
         def find_parents(a, parents):
-            if a == parents[a]: 
+            if a == parents[a]:
                 return a
             else:
                 parents[a] = find_parents(parents[a], parents)
                 return parents[a]
 
-        def _union(a, b, parents):            
+        def _union(a, b, parents):
             a = find_parents(a, parents)
             b = find_parents(b, parents)
             parents[b] = a
