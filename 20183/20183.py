@@ -4,6 +4,7 @@ import heapq
 get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
 get_input: int = lambda: int(sys.stdin.readline().strip())
 
+
 def Dijkstra(N, M, A, B, C, mid):
     dist = [sys.maxsize for _ in range(N + 1)]
     heap = []
@@ -13,7 +14,7 @@ def Dijkstra(N, M, A, B, C, mid):
         now_dist, now_pos = heapq.heappop(heap)
         if now_dist > dist[now_pos]:
             continue
-        
+
         if now_pos == B and dist[B] <= C:
             return True
 
