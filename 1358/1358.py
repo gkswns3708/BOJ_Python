@@ -16,7 +16,7 @@ def set_variable():
 def solution():
     global W, H, X, Y, P, players
     def check(x, y):
-        if  X <= x <= x + W and Y <= y <= H: # 중앙 사각형 내에 있을 경우
+        if  X <= x <= X + W and Y <= y <= Y + H: # 중앙 사각형 내에 있을 경우
             return 1
         if (X - x) ** 2 + (Y + H/2 - y) ** 2 <= (H/2)**2:
             return 1

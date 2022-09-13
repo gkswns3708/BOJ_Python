@@ -14,7 +14,7 @@ def set_variable():
 
 def solution():
     global N, K, input_list
-    print(sorted(input_list,reverse=True)[K])
+    print(sorted(input_list,reverse=True)[K-1])
 
 if __name__ == "__main__":
     set_variable()
