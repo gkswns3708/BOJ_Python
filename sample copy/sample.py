@@ -1,14 +1,11 @@
-import sys
+import functools
 
-get_line: iter = lambda: map(int, sys.stdin.readline().rstrip().split())
-get_input: int = lambda: int(sys.stdin.readline().strip())
+def add(x, y):
+    return x + y
 
-def set_variable():
+def outer(x):
+    def inner(y):
+        return x + y
+    return inner
 
-
-def solution():
-
-
-if __name__ == "__main__":
-    set_variable()
-    solution()
+print(functools.partial(add, 10)(10), outer(10)(10))
